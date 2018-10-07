@@ -1,0 +1,42 @@
+function Problem1_BinomRandomVars
+[vals,probs] = binom_prob_mass(0,7,7,.7);
+prob_mass_graph(vals,probs)
+prob_cumulitive_graph(vals,probs)
+
+
+function [vals,out] = binom_prob_mass(s,X,n,P)
+vals = [];
+out = [];
+for i = s:X
+    vals = [vals,i];
+    val = binopdf(i,n,P);
+    out = [out,val];
+    fprintf(
+    print = sprintf('For X = %d, P = %e',i,val);
+    fprintf('%s\n',print)
+end
+
+function prob_mass_graph(vals,probs,num,let)
+head = sprintf('Mass function, Part %s',let);
+figure('Visible','on','Name','Prob Mass Graph 1')
+bar(vals,probs)
+xlabel('Vlaues of X')
+ylabel('Probability')
+
+function prob_cumulitive_graph(vals,probs,num,let)
+head = sprintf('Cumulitive Distribution, Part %s',let);
+figure('Visible','on','Name',head)
+cum_dist = zeros(1,length(vals));
+cum_dist(1) = probs(1);
+for i = 2:length(probs)
+    dist = cum_dist(i-1) + probs(i);
+    cum_dist(i) = dist;    
+end
+% vals = [vals(1),vals];
+% cum_dist = [cum_dist(1),cum_dist];
+vals = [vals,(vals(2:end)-1)];
+cum_dist = [cum_dist,cum_dist(2:end)];
+plot(sort(vals),sort(cum_dist),'.-','LineWidth',2,'MarkerSize',20)
+xlabel('Values of X')
+ylabel('Probability')
+title(head)
