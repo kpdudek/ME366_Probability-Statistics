@@ -69,7 +69,7 @@ function prob_mass_graph(vals,probs,num,let)
 head = sprintf('Mass function, Prob: %d, Part: %s',num,let);
 figure('Visible','on','Name',head)
 bar(vals,probs)
-xlabel('Vlaues of X')
+xlabel('Values of X')
 ylabel('Probability')
 title(head)
 
