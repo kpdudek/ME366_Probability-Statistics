@@ -13,7 +13,9 @@ prob_cumulitive_graph(vals,probs,1,'d')
 prob_mass_graph(vals2,probs2,2,'b')
 prob_cumulitive_graph(vals2,probs2,2,'b')
 
-[vals3,probs3] = dice_cumulative(2,'c');
+%[vals3,probs3] = dice_cumulative(2,'c');
+vals3 = [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+probs3 = [1/216,3/216,6/216,10/216,15/216,21/216,25/216,27/216,27/216,25/216,21/216,15/216,10/216,6/216,3/216,1/216];
 prob_mass_graph(vals3,probs3,2,'d')
 prob_cumulitive_graph(vals3,probs3,2,'d')
 
@@ -28,7 +30,12 @@ for i = s:X
     vals = [vals,i];
     val = binopdf(i,n,P);
     out = [out,val];
-    print = sprintf('For X = %d, P = %e',i,val);
+    print = sprintf('For X = %d, PDF = %e',i,val);
+    fprintf('%s\n',print)
+    
+    val2 = binocdf(i,n,P);
+    %out = [out,val];
+    print = sprintf('For X = %d, CDF = %e',i,val2);
     fprintf('%s\n',print)
 end
 
