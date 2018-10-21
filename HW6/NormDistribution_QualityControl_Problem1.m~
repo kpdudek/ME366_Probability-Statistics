@@ -1,0 +1,9 @@
+function NormDistribution_QualityControl_Problem1
+% Manufacturing process normal random variable X represensts the length of
+% the part. Mean value of 9.51, standard deviation .045, and specification
+% range 9.5 +- 0.1
+
+% a) find the fraction of parts that do not meet spec
+% b) Assume 1000 parts are produced a day, specify the random vaieble of
+% the numbr of parts per day that do not meet the spercification and find
+% its mean
