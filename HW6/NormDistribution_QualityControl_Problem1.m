@@ -20,15 +20,19 @@ function NormDistribution_QualityControl_Problem1
 p_bad = 1-(normcdf(9.6,9.51,.045)-normcdf(9.4,9.51,.045));
 fprintf('The fraction of bad parts is: %.4f\n',p_bad)
 
-meas = [];
+dist = [];
 for i = 0:1000
-    meas(end+1) = normrnd(9.51,.045);
+    dist(end+1) = binocdf(i,1000,.03);
 end
+dist = dist * 100;
+two5 = dist - 2.5;
+nin7 = dist - 97.5;
+t5 = find(two5 == min(two5(find(two5>0))));
+n7 = find(nin7 == min(nin7(find(nin7>0))));
 
-eval = mean(meas);
 
-p1 = prctile(meas,97.5);
-p2 = prctile(meas,2.5);
-pt = p1-p2; % Typical range
+% p1 = prctile(dist,97.5);
+% p2 = prctile(dist,2.5);
+% pt = p1-p2; % Typical range
 
-fprintf('Mean: %.2f\nTypical Value: %.2f\n',eval,pt)
+fprintf('2.5: %.4f\n97.5: %.4f\n',t5,n7)
